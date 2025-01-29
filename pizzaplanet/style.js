@@ -7,7 +7,7 @@ querySelector() for DOM classes
 
 or, if you want to be particularly annoying,
 
-getElementsByClassName method()
+getElementsByClassName()
 
 */
 
