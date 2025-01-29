@@ -1,4 +1,15 @@
-const pizzaSpain = document.getElementById("pizza"); // Use getElementById for ID selector
+const pizzaSpain = document.getElementById("pizza");
+/*
+getElementById() for DOM ids
+querySelector() for DOM classes
+
+or, 
+if you want to be particularly annoying
+
+getElementsByClassName method()
+
+
+*/
 const tScale = document.getElementById(".tOut")
 
 
@@ -9,9 +20,9 @@ let flag = 0;
 function  startRotation() {
 let rFlag = 0;
 setInterval(() => {
-  rotation += 360; // Increment rotation by 360 degrees each second
+  rotation += 360; 
   scale = scale === 1 ? 0.5 : 0.8;
-  pizzaSpain.style.transform = `rotate(${rotation}deg)  scale(${scale})`; // Apply rotation
+  pizzaSpain.style.transform = `rotate(${rotation}deg)  scale(${scale})`; 
 }, 500);}
 
 
@@ -23,7 +34,7 @@ setInterval(() => {
 function startScale(anchor) {
   scale = scale === 1 ? 1.5 : 1;
   anchor.style.transform = `scale(${scale})`; 
-  anchor.style.transition = "transform 0.3s ease"; // Smooth transition for the scale effect
+  anchor.style.transition = "transform 0.3s ease"; 
 }
 
 
