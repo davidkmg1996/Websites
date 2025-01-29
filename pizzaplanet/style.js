@@ -17,6 +17,7 @@ const tScale = document.getElementById(".tOut")
 let rotation = 0;
 let scale = 1;
 let flag = 0;
+let nScale = 1;
 
 function  startRotation() {
 let rFlag = 0;
@@ -33,9 +34,9 @@ setInterval(() => {
 // }
 
 function startScale(anchor) {
-  scale = scale === 1 ? 1.5 : 1;
-  anchor.style.transform = `scale(${scale})`; 
-  anchor.style.transition = "transform 0.3s ease"; 
+  nScale = nScale === 1 ? 1.5 : 1;
+  anchor.style.transform = `scale(${nScale})`; 
+  anchor.style.transition = "transform 0.2s ease"; 
 }
 
 
