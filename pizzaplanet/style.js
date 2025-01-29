@@ -4,6 +4,7 @@ const tScale = document.getElementById(".tOut")
 
 let rotation = 0;
 let scale = 1;
+let flag = 0;
 
 function  startRotation() {
 setInterval(() => {
@@ -30,11 +31,24 @@ function startScale(anchor) {
 
 
 function openNav() {
+
+  if (flag == 0) {
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
+    flag = 1;
+  } else {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    flag = 0
+  }
   }
   
   function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+  function closeNavB() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
