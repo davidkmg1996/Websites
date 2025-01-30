@@ -30,6 +30,16 @@ body {
   font-family: "Rubik", serif;
 }
 
+.tOutlineB2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  color:black;
+  text-align: center;
+  font-family: "Rubik", serif;
+}
+
 .buttonC {
   display: block;
   margin-left: auto;
