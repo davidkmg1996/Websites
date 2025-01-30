@@ -1,0 +1,130 @@
+#bleh {
+    background: rgb(209,3,194);
+    background: linear-gradient(90deg, rgba(209,3,194,1) 0%, rgba(0,212,255,1) 57%);
+    background-size: contain;
+}
+
+body {
+  padding-bottom: 500px;
+}
+
+.tOut {
+    margin-bottom: -50px;
+    color:white;
+    text-align: center;
+    font-family: "Rubik", serif;
+
+}
+
+.tOutline {
+    margin-top: 10px;
+    color:white;
+    text-align: center;
+    font-family: "Rubik", serif;
+}
+
+.tOutlineB {
+  margin-top: 5px;
+  color:black;
+  text-align: center;
+  font-family: "Rubik", serif;
+}
+
+.buttonC {
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.checkbox {
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+}
+.logIn {
+  margin:auto;
+}
+
+#pizza {
+  display: block;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  transform-origin: center; /* Ensure rotation happens from the center */
+  transition: transform 1s linear; 
+}
+.sidebar {
+    height: 100%;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background: rgb(209,3,194);
+    background-color: linear-gradient(90deg, rgba(209,3,194,1) 0%, rgba(0,212,255,1) 57%); 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+  }
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 20px;
+    color: wheat;
+    display: block;
+    transition: 0.01s;
+  }
+  
+  .h {
+    margin-top: 500;
+  }
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  .lP {
+    color:white;
+    text-align: center;
+    font-family: "Rubik", serif;
+  }
+
+  .bText {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    font-family: "Rubik", serif;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }

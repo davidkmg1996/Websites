@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html id="bleh">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='cssI/style.css') }}">
+</head>
+<header>
+    <h1 class="tOut">
+        Home
+    </h1>
+    <div id="main">
+        <button class = "openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <h2 class="tOutline">
+        David's Terrible Website
+    </h2>
+    <p class = "tOutline">Logged in as {{name}}</p>
+</header>
+<body>
+<div class="tOutline">
+<p class ="tOutline">
+    This is just a terrible website that I am making for demonstration purposes.
+</p>
+</div>
+<div>
+    <!-- <img src="pics/pizza.jpeg" alt="fuck you" id="pizza" onclick="startRotation()"> -->
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="{{ url_for('auth.signup') }}" onclick="startScale(this)" id="tOut">Sign up</a>
+    <a href="#" onclick="startScale(this)">Making</a>
+    <a href="#" onclick="startScale(this)">A</a>
+    <a href="#" onclick="startScale(this)">Pizza</a>
+  </div>
+<div id="lP">
+    <h1 class="lP">
+        Log In
+    </h1>
+    <form method="post" action="{{ url_for('auth.login_post') }}">
+    <p class="lP">Username</p>
+    <input class="bText" type="email" name="email" placeholder="Your Email" autofocus="">></input>
+    <p class = "lP">Password</p>
+    <input class="bText" type="password" name="password" placeholder="Your Password"></input>
+<div class="tOutline">
+    <label class="checkbox">
+        <input type="checkbox" name="remember">
+        Remember me
+    </label>
+    <button class="tOutlineB">Login</button>
+</form>
+    <div id="spacer"></div>
+</div>
+<script src="{{ url_for('static', filename='js/style.js') }}"></script>
+</body>
+</html>
