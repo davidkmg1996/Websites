@@ -16,6 +16,13 @@ body {
 
 }
 
+.tOutD {
+    color:white;
+    text-align: left;
+    font-family: "Rubik", serif;
+}
+
+
 .tOutline {
     margin-top: 10px;
     color:white;
