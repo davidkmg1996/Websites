@@ -25,7 +25,6 @@ def login_post():
     login_user(user, remember=remember)
     return redirect(url_for('main.profile'))
 
-
 @auth.route('/signup')
 def signup():
     return render_template('signup.html')
@@ -35,18 +34,19 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    des = request.form.get('description')
 
     if not email:
         flash('Email address is required')
         return redirect(url_for('auth.signup'))
 
     user = User.query.filter_by(email=email).first()
-    
+
     if user:
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))
     
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='pbkdf2:sha256'))
+    new_user = User(email=email, name=name, password=generate_password_hash(password, method='pbkdf2:sha256'), des=des)
 
     db.session.add(new_user)
     db.session.commit()
