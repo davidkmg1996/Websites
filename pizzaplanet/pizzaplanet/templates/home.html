@@ -16,7 +16,6 @@
     <h2 class="tOutline">
         David's Terrible Website
     </h2>
-    <p class = "tOutline">Logged in as {{name}}</p>
 </header>
 <body>
 <div class="tOutline">
@@ -31,7 +30,7 @@
 <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="{{ url_for('auth.signup') }}" onclick="startScale(this)" id="tOut">Sign up</a>
-    <a href="#" onclick="startScale(this)">Making</a>
+    <a href="{{ url_for('main.profileInfo') }}" onclick="startScale(this)">Profile</a>
     <a href="#" onclick="startScale(this)">A</a>
     <a href="#" onclick="startScale(this)">Pizza</a>
   </div>

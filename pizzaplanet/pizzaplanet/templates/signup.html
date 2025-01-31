@@ -6,6 +6,16 @@
 
 {% block content %}
 <div>
+    <div id="main">
+        <button class = "openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{{ url_for('auth.signup') }}" onclick="startScale(this)" id="tOut">Sign up</a>
+        <a href="{{ url_for('main.profileInfo') }}" onclick="startScale(this)">Profile</a>
+        <a href="#" onclick="startScale(this)">A</a>
+        <a href="#" onclick="startScale(this)">Pizza</a>
+      </div>
     <h3 class="tOutline">Sign Up</h3>
     <div class="box">
         <form method="POST" action="{{ url_for('auth.signup_post') }}">
@@ -14,13 +24,11 @@
                     <input class="tOutlineB2" type="email" name="email" placeholder="Email" autofocus="">
                 </div>
             </div>
-
             <div class="field">
                 <div class="control">
                     <input class="tOutlineB2" type="text" name="name" placeholder="Name" autofocus="">
                 </div>
             </div>
-
             <div class="field">
                 <div class="control">
                     <input class="tOutlineB2" type="password" name="password" placeholder="Password">

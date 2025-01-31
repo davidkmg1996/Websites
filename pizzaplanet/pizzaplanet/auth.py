@@ -36,7 +36,12 @@ def signup_post():
     name = request.form.get('name')
     password = request.form.get('password')
 
+    if not email:
+        flash('Email address is required')
+        return redirect(url_for('auth.signup'))
+
     user = User.query.filter_by(email=email).first()
+    
     if user:
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))

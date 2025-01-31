@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html id="bleh">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='cssI/style.css') }}">
+    <script src="{{ url_for('static', filename='js/style.js') }}"></script>
+</head>
+<header>
+    <h1 class="tOut">
+        Profile Info
+    </h1>
+    <div id="main">
+        <button class = "openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <h2 class="tOutline">
+        {{name}}'s Profile
+    </h2>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{{ url_for('main.profile') }}" onclick="startScale(this)" id="tOut">Home</a>
+        <a href="{{ url_for('main.profileInfo') }}" onclick="startScale(this)">Profile</a>
+        <a href="#" onclick="startScale(this)">A</a>
+        <a href="#" onclick="startScale(this)">Pizza</a>
+      </div>
+</header>
