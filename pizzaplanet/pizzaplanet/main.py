@@ -19,6 +19,14 @@ def profileInfo():
 def profile():
     return render_template('home.html')
 
+@main.route('/editProfile')
+@login_required
+def editProfile():
+    if current_user.is_authenticated:
+        return render_template('editprofile.html', name = current_user.name or 'Guest')
+    else:
+        return render_template('home.html')
+
 @main.route('/index')
 @login_required
 def userHome():

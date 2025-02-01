@@ -8,7 +8,7 @@
 </head>
 <header>
     <h1 class="tOut">
-        Profile Info
+        Edit Profile
     </h1>
     <div id="main">
         <button class = "openbtn" onclick="openNav()">&#9776;</button>
@@ -16,7 +16,7 @@
     <h2 class="tOutline">
         {{name}}'s Profile 
     </h2>
-    <p class = tOutline>Welcome to your profile!</p>
+    <p class = tOutline>Make Changes to your Profile</p>
     <h3 class="tOutD">
         Profile Description
     </h3>
@@ -24,7 +24,8 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="{{ url_for('main.userHome') }}" class="navFont" id="tOut">Home</a>
-        <a href="{{ url_for('main.editProfile') }}" class="navFont">Edit Profile</a>
+        <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile</a>
         <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
       </div>
 </header>
+</html>
