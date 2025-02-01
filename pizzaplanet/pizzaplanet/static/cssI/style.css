@@ -22,6 +22,11 @@ body {
     font-family: "Rubik", serif;
 }
 
+.navFont {
+  color:white;
+  font-family: "Rubik", serif;
+
+}
 
 .tOutline {
     margin-top: 10px;
