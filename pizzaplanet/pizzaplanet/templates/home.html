@@ -50,7 +50,7 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div>
-        {{ messages[0] }}
+        {{ messages[0] }} New user? Register <a href="{{url_for('auth.signup')}}">Here!</a>
     </div>
 {% endif %}
 {% endwith %} 
