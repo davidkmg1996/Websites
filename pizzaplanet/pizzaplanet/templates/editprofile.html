@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html id="bleh">
+<body>
 <head>
     <title>Edit Profile</title>
     <meta charset="utf-8">
@@ -48,7 +49,13 @@
         <br><br>
         <button type="submit">Upload</button>
     </form>
+    {% if current_user.fPath %}
+    <h2>Uploaded Files</h2>
+            <img src="{{ url_for('auth.view_image') }}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
+        {% endif %}
 </header>
+</body>
+</html>
 
 
 

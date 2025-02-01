@@ -23,7 +23,7 @@ def profile():
 @login_required
 def editProfile():
     if current_user.is_authenticated:
-        return render_template('editprofile.html', name = current_user.name or 'Guest', des = current_user.des)
+        return render_template('editprofile.html', name = current_user.name or 'Guest', des = current_user.des, fPath = current_user.fPath)
     else:
         return render_template('home.html')
 

@@ -1,10 +1,11 @@
-from flask import Blueprint, render_template, request, flash, current_app
+from flask import Blueprint, render_template, request, flash, current_app, send_file
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
 from . import db
 import os
+from io import BytesIO
 from flask import Blueprint, render_template, redirect, url_for
 
 auth = Blueprint('auth', __name__)
@@ -88,13 +89,29 @@ def upload():
     fName = secure_filename(file.filename)
     uploadF= current_app.config['UPLOAD']
     
+    img = file.read()
+
     if not os.path.exists(uploadF):
         os.makedirs(uploadF)
 
-    fPath = os.path.join(uploadF, fName)
-    file.save(fPath)
-    user = User.query.first()
-    user.fPath = fPath
+    user = current_user
+    user.fPath = img
     db.session.commit()
 
-    return redirect(url_for('main.profileInfo'))
+    return render_template('editprofile.html', name = current_user.name, des = current_user.des, img = img)
+
+@auth.route('/view_image')
+def view_image():
+    user = current_user
+    if user and user.fPath:
+        return send_file(BytesIO(user.fPath), mimetype='image/png') 
+    return "No image found"
+
+# @auth.route('/select', methods=['POST'])
+# def files():
+#     sFile = request.form.get('sFile')
+#     current_user.fPath = sFile
+#     db.session.commit()
+#     flash('sFile')
+#     return redirect(url_for('main.profileInfo'))    
+    
