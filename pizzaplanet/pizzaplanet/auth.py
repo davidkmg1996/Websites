@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 from flask_login import login_user, login_required, logout_user
 from .models import User
 from . import db
+import os
 from flask import Blueprint, render_template, redirect, url_for
 
 auth = Blueprint('auth', __name__)
@@ -57,3 +59,20 @@ def signup_post():
 def logout():
    logout_user()
    return redirect(url_for('main.index'))
+
+@auth.route('/uploads', methods=['POST'])
+def upload():
+    file = request.files['file']
+    fName = secure_filename(file.filename)
+    uploadF= current_app.config['UPLOAD']\
+    
+    if not os.path.exists(uploadF):
+        os.makedirs(uploadF)
+
+    fPath = os.path.join(uploadF, fName)
+    file.save(fPath)
+    user = User.query.first()
+    user.fPath = fPath
+    db.session.commit()
+
+    return redirect(url_for('main.profileInfo'))
