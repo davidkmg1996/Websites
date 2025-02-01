@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
 from . import db
 import os
@@ -70,6 +70,12 @@ def signup_post():
     db.session.commit()
     return redirect(url_for('auth.login'))
 
+@auth.route('/editnew', methods=['POST'])
+def edit():
+    newDes = request.form.get('editDesc')
+    current_user.des = newDes
+    db.session.commit()
+    return render_template('editprofile.html', name = current_user.name, des = current_user.des)
 
 @auth.route('/logout')
 def logout():
@@ -80,7 +86,7 @@ def logout():
 def upload():
     file = request.files['file']
     fName = secure_filename(file.filename)
-    uploadF= current_app.config['UPLOAD']\
+    uploadF= current_app.config['UPLOAD']
     
     if not os.path.exists(uploadF):
         os.makedirs(uploadF)
