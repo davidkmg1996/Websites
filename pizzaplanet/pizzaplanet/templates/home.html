@@ -49,13 +49,13 @@
 </form>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
-    <div>
+    <div class = "pad">
         {{ messages[0] }} New user? Register <a href="{{url_for('auth.signup')}}">Here!</a>
     </div>
 {% endif %}
 {% endwith %} 
 <div id="spacer"></div>
-<span> <img src="{{ url_for('static', filename='pics/pizza.jpeg') }}" id="pizza" alt="Pizza" onclick="startRotation()"></span>
+<span> <img src="{{ url_for('static', filename='pics/pizza.jpeg') }}" id="pizza" alt="Pizza" onclick="startRotation(), closeNav()"></span>
 </div>
 <script src="{{ url_for('static', filename='js/style.js') }}"></script>
 </body>

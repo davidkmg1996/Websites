@@ -35,6 +35,11 @@ body {
 
 }
 
+.pad {
+  padding-top: 15px;
+  padding-bottom: -15px;
+}
+
 .iUpload {
   display: block;
   margin-left: auto;
@@ -75,6 +80,21 @@ body {
   text-align: left;
   font-family: "Rubik", serif;
   resize: none;
+}
+
+.tOutlineB4 {
+  display: block;
+  margin-top: 10px;
+  color:white;
+  text-align: left;
+  font-family: "Rubik", serif;
+  resize: none;
+}
+
+#center {
+  text-align: center;
+  font-family: "Rubik", serif;
+  color: red;
 }
 
 #descript {

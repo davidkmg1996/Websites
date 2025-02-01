@@ -74,6 +74,12 @@ def signup_post():
 @auth.route('/editnew', methods=['POST'])
 def edit():
     newDes = request.form.get('editDesc')
+
+    if not newDes:
+        flash('Cannot be left blank')
+        return redirect(url_for('main.editProfile'))
+
+
     current_user.des = newDes
     db.session.commit()
     return render_template('editprofile.html', name = current_user.name, des = current_user.des)

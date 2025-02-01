@@ -33,10 +33,15 @@
     <p class="tOutD">Current profile description:<br><br>{{des}}</p>
     <p class="tOutD">Edit your profile description below:<br></p>
     <form method="POST" action="{{ url_for('auth.edit') }}">
+        {% with messages = get_flashed_messages() %}
     <div class="field">
         <div class="control">
             <textarea id ="descript" type="text" name="editDesc" placeholder="Enter a short profile description"></textarea>
         </div>
+        {% if messages %}
+       <p id = "center">{{ messages[0] }} </p> 
+        {% endif %}
+        {% endwith %}
     </div>
     <br>
     <button class="buttonD">Edit Description</button>
