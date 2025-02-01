@@ -18,8 +18,15 @@
         Hey, {{name}}
     </h2>
     <p class = tOutline>Make changes to your profile</p>
-
-    <h3 class="tOutD">
+</header>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{{ url_for('main.userHome') }}" class="navFont" id="tOut">Home</a>
+        <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile</a>
+        <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
+        <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
+      </div>
+      <h3 class="tOutD">
         Profile Description
     </h3>
     <div>
@@ -35,14 +42,8 @@
     <button class="tOutlineB">Edit Description</button>
     <br><br>
 </form>
+<h2 class="tOutD">Uploaded Files</h2>
     </div>
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{{ url_for('main.userHome') }}" class="navFont" id="tOut">Home</a>
-        <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile</a>
-        <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
-        <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
-      </div>
       <form action="/uploads" method="POST" enctype="multipart/form-data">
         <label class="tOutD" for="file">Choose a file:</label><br><br>
         <input type="file" id="file" name="file" accept="image/*" required>
@@ -50,7 +51,6 @@
         <button type="submit">Upload</button>
     </form>
     {% if current_user.fPath %}
-    <h2>Uploaded Files</h2>
             <img src="{{ url_for('auth.view_image') }}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
         {% endif %}
 </header>

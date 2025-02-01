@@ -37,9 +37,9 @@
     </h1>
     <form method="post" action="{{ url_for('auth.login_post') }}">
     <p class="lP">Username</p>
-    <input class="bText" type="email" name="email" placeholder="Your Email" autofocus=""></input>
+    <input class="bText" type="email" name="email" placeholder="Your Email" autofocus="" onclick="closeNav()"></input>
     <p class = "lP">Password</p>
-    <input class="bText" type="password" name="password" placeholder="Your Password"></input>
+    <input class="bText" type="password" name="password" placeholder="Your Password" onclick="closeNav()"></input>
 <div class="tOutline">
     <label class="checkbox">
         <input type="checkbox" name="remember">
