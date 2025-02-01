@@ -47,6 +47,12 @@ def signup_post():
     password = request.form.get('password')
     des = request.form.get('description')
 
+    user = User.query.filter_by(email=email).first()
+
+    if user:
+        flash('Email address already exists')
+        return redirect(url_for('auth.signup'))
+
     if not email:
         flash('Email address is required')
         return redirect(url_for('auth.signup'))
@@ -57,12 +63,6 @@ def signup_post():
     
     if not password:
         flash('Password is required')
-        return redirect(url_for('auth.signup'))
-
-    user = User.query.filter_by(email=email).first()
-
-    if user:
-        flash('Email address already exists')
         return redirect(url_for('auth.signup'))
     
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='pbkdf2:sha256'), des=des)
