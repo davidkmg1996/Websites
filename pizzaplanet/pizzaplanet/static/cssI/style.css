@@ -150,3 +150,7 @@ body {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
   }
+
+  #spacer {
+    margin-top: 50px;
+  }
