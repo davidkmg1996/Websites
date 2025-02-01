@@ -14,12 +14,12 @@
         <button class = "openbtn" onclick="openNav()">&#9776;</button>
     </div>
     <h2 class="tOutline">
-        {{name|default:"Guest"}}'s Profile 
+        {{name}}'s Profile 
     </h2>
     <h3 class="tOutD">
         Profile Description
     </h3>
-    <p class = "tOutD">{{des|default:" "}}</p>
+    <p class = "tOutD">{{des}}</p>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="{{ url_for('main.userHome') }}" class="navFont" id="tOut">Home</a>
