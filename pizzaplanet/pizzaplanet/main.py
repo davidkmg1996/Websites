@@ -10,8 +10,10 @@ def index():
 
 @main.route('/profileinfo')
 def profileInfo():
-    return render_template('profileinfo.html', name = current_user.name or 'Guest', des=current_user.des or '')
-
+    if current_user.is_authenticated:
+        return render_template('profileinfo.html', name = current_user.name or 'Guest', des=current_user.des or '')
+    else:
+        return render_template('home.html')
 @main.route('/profile')
 def profile():
     return render_template('home.html')
