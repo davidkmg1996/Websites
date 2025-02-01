@@ -97,8 +97,7 @@ body {
     z-index: 1; 
     top: 0;
     left: 0;
-    background: rgb(209,3,194);
-    background-color: linear-gradient(90deg, rgba(209,3,194,1) 0%, rgba(0,212,255,1) 57%); 
+    background: linear-gradient(60deg, rgba(209,3,194,1) 33%, rgba(0,212,255,1) 57%); 
     overflow-x: hidden; 
     padding-top: 60px; 
     transition: 0.5s; 
@@ -119,7 +118,7 @@ body {
     text-decoration: none;
     font-size: 25px;
     margin-left: 20px;
-    color: wheat;
+    color: black;
     display: block;
     transition: 0.01s;
   }
