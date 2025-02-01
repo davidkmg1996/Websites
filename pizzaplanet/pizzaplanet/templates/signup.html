@@ -42,7 +42,7 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div class="tOutline">
-        {{ messages[0] }} Go to <a href="{{ url_for('auth.login') }}">login page</a>
+        {{ messages[0] }}. Sign in <a href="{{ url_for('auth.login') }}">here!</a>
     </div>
 {% endif %}
 {% endwith %} 
