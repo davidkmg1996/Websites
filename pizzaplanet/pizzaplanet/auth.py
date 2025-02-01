@@ -82,8 +82,6 @@ def edit():
     if not newDes:
         flash('Cannot be left blank')
         return redirect(url_for('main.editProfile'))
-
-
     current_user.des = newDes
     db.session.commit()
     return render_template('editprofile.html', name = current_user.name, des = current_user.des)
@@ -120,6 +118,7 @@ def profilePic():
     user = current_user
     user.profPic = pPic
     db.session.commit()
+    flash('Profile Picture Successfuly Changed')
     return render_template('editprofile.html', name = current_user.name, des = current_user.des, pPic = current_user.profPic)
 
 @auth.route('/view_image')
