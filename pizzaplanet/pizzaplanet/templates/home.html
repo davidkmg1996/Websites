@@ -28,6 +28,11 @@
 </div>
 
 <div id="mySidebar" class="sidebar">
+     {% if current_user.profPic %}
+         <img src="{{ url_for('auth.profile_pic') }}" id="profilePicture" alt="Uploaded Image" style="height: 25px; width: 25px;">
+    {% else %}
+        <p></p>
+    {% endif %}
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="{{ url_for('auth.signup') }}" class="navFont" id="tOut">Sign up</a>
   </div>

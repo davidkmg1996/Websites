@@ -17,19 +17,14 @@
     <h2 class="tOutline">
         David's Terrible Website
     </h2>
-    <h3 class="tOutline">Welcome, {{name}}!</h3>
+    <h3 class="tOutlineF">Welcome, {{name}}!
+</h3>
 </header>
 <body>
 <div class="tOutline">
 <p class ="tOutline">
     This is just a terrible website that I am making for demonstration purposes.<br><br>
     Below you will find several images of pizza. 
-    
-            {% if current_user.profPic %}
-            <img src="{{ url_for('auth.profile_pic') }}" class="iUpload" alt="Uploaded Image" style="max-width: 50%; height: 50%;">
-        {% else %}
-            <p>No profile picture uploaded.</p>
-        {% endif %}
 
 </p>
 </div>
@@ -39,8 +34,15 @@
 </div>
 
 <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
+    {% if current_user.profPic %}
+         <img src="{{ url_for('auth.profile_pic') }}" id="profilePicture" alt="Uploaded Image" style="height: 25px; width: 25px;">
+    {% else %}
+        <p></p>
+    {% endif %}
+    </a>
+    <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile
+    </a>
     <a href="{{ url_for('main.editProfile') }}" class="navFont">Edit Profile</a>
     <a href="{{ url_for('auth.logout') }}" class="navFont" id="tOut">Sign Out</a>
     <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
