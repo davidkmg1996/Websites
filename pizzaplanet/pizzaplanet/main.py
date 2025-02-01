@@ -32,4 +32,7 @@ def editProfile():
 def userHome():
     return render_template('index.html', name = current_user.name)
 
-
+@main.route('/security')
+@login_required
+def security():
+    return render_template('security.html', name = current_user.name)

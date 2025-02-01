@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html id="bleh">
+<body>
 <head>
-    <title>Profile</title>
+    <title>Security</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href = "{{ url_for('static', filename='cssI/style.css') }}">
     <script src="{{ url_for('static', filename='js/style.js') }}"></script>
 </head>
 <header>
     <h1 class="tOut">
-        Profile Info
+        Security
     </h1>
     <div id="main">
         <button class = "openbtn" onclick="openNav()">&#9776;</button>
     </div>
     <h2 class="tOutline">
-        {{name}}'s Profile 
+        Hey, {{name}}
     </h2>
-    <p class = tOutline>Welcome to your profile!</p>
-    <h3 class="tOutD">
-        Profile Description
+    <p class = tOutline>Manage Password, Update Email Address</p>
+
+    <h3 class="tOutline">
+        Security
     </h3>
-    <p class = "tOutD">{{des}}</p>
+</form>
+    </div>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="{{ url_for('main.userHome') }}" class="navFont" id="tOut">Home</a>
+        <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile</a>
         <a href="{{ url_for('main.editProfile') }}" class="navFont">Edit Profile</a>
         <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
-        <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
       </div>
 </header>
+</body>
+</html>
+
