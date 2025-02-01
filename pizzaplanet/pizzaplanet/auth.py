@@ -24,8 +24,9 @@ def login_post():
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         return redirect(url_for('auth.login'))
-    login_user(user, remember=remember)
-    return redirect(url_for('main.userHome'))
+    else:
+        login_user(user, remember=remember)
+        return redirect(url_for('main.userHome'))
 
 @auth.route('/signup')
 def signup():

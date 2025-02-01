@@ -47,6 +47,13 @@
     </label>
     <button class="tOutlineB">Login</button>
 </form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <div>
+        {{ messages[0] }}
+    </div>
+{% endif %}
+{% endwith %} 
 <div id="spacer"></div>
 <span> <img src="{{ url_for('static', filename='pics/pizza.jpeg') }}" id="pizza" alt="Pizza" onclick="startRotation()"></span>
 </div>
