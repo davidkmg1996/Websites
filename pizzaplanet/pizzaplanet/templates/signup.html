@@ -11,10 +11,7 @@
     </div>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{{ url_for('auth.signup') }}" onclick="startScale(this)" id="tOut">Sign up</a>
-        <a href="{{ url_for('main.profileInfo') }}" onclick="startScale(this)">Profile</a>
-        <a href="#" onclick="startScale(this)">A</a>
-        <a href="#" onclick="startScale(this)">Pizza</a>
+        <a href="{{ url_for('main.profile') }}" onclick="startScale(this)">Sign In</a>
       </div>
     <h3 class="tOutline">Sign Up</h3>
     <div class="box">
@@ -43,13 +40,13 @@
         </form>
     </div>
 </div>
-{% with messages = get_flashed_messages() %}
+<!-- {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div class="notification is-danger">
         {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
     </div>
 {% endif %}
-{% endwith %}
+{% endwith %} -->
 <form method="POST" action="{{url_for ('auth.signup_post')}}">
 <script src="{{ url_for('static', filename='js/style.js') }}"></script>
 <script src="../static/js/style.js"></script>

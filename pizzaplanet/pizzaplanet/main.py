@@ -10,12 +10,11 @@ def index():
 
 @main.route('/profileinfo')
 def profileInfo():
-    return render_template('profileinfo.html', name = current_user.name, des=current_user.des)
+    return render_template('profileinfo.html', name = current_user.name or 'Guest', des=current_user.des or '')
 
 @main.route('/profile')
-@login_required
 def profile():
-    return render_template('home.html', name = current_user.name)
+    return render_template('home.html')
 
 @main.route('/index')
 @login_required

@@ -22,9 +22,7 @@
     <p class = "tOutD">{{des or ''}}</p>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="{{ url_for('main.profile') }}" onclick="startScale(this)" id="tOut">Home</a>
+        <a href="{{ url_for('main.userHome') }}" onclick="startScale(this)" id="tOut">Home</a>
         <a href="{{ url_for('main.profileInfo') }}" onclick="startScale(this)">Profile</a>
-        <a href="#" onclick="startScale(this)">A</a>
-        <a href="#" onclick="startScale(this)">Pizza</a>
       </div>
 </header>
