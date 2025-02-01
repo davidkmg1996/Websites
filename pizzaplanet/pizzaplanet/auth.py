@@ -49,6 +49,14 @@ def signup_post():
     if not email:
         flash('Email address is required')
         return redirect(url_for('auth.signup'))
+    
+    if not name:
+        flash('Name is required')
+        return redirect(url_for('auth.signup'))
+    
+    if not password:
+        flash('Password is required')
+        return redirect(url_for('auth.signup'))
 
     user = User.query.filter_by(email=email).first()
 
