@@ -16,3 +16,10 @@ def profileInfo():
 @login_required
 def profile():
     return render_template('home.html', name = current_user.name)
+
+@main.route('/index')
+@login_required
+def userHome():
+    return render_template('index.html', name = current_user.name)
+
+
