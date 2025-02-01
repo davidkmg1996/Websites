@@ -21,12 +21,19 @@ def login_post():
     remember = True if request.form.get('remember') else False
     user = User.query.filter_by(email=email).first()
 
+    if not email:
+        flash('Email is required.')
+        return redirect(url_for('auth.login'))
+    
+    if not password:
+        flash('Password is required.')
+
     if not user or not check_password_hash(user.password, password):
         flash('Incorrect email or password.')
         return redirect(url_for('auth.login'))
-    else:
-        login_user(user, remember=remember)
-        return redirect(url_for('main.userHome'))
+
+    login_user(user, remember=remember)
+    return redirect(url_for('main.userHome'))
 
 @auth.route('/signup')
 def signup():
