@@ -31,7 +31,7 @@
     </h3>
     <div>
     <p class="tOutD">Current profile description:<br><br>{{des}}</p>
-    <p class="tOutD">Edit a new profile description below:<br></p>
+    <p class="tOutD">Edit your profile description below:<br></p>
     <form method="POST" action="{{ url_for('auth.edit') }}">
     <div class="field">
         <div class="control">
@@ -39,19 +39,19 @@
         </div>
     </div>
     <br>
-    <button class="tOutlineB">Edit Description</button>
+    <button class="buttonD">Edit Description</button>
     <br><br>
 </form>
 <h2 class="tOutD">Uploaded Files</h2>
     </div>
       <form action="/uploads" method="POST" enctype="multipart/form-data">
-        <label class="tOutD" for="file">Choose a file:</label><br><br>
-        <input type="file" id="file" name="file" accept="image/*" required>
+        <p class="tOutD">Choose a file:</label><br><br>
+        <input class="tOutS" type="file" id="file" name="file" accept="image/*" required>
         <br><br>
-        <button type="submit">Upload</button>
+        <button class="buttonS" type="submit">Upload</button>
     </form>
     {% if current_user.fPath %}
-            <img src="{{ url_for('auth.view_image') }}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
+            <img src="{{ url_for('auth.view_image') }}" class = "iUpload" alt="Uploaded Image" style="max-width: 50%; height: 50%;">
         {% endif %}
 </header>
 </body>

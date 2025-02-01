@@ -18,14 +18,28 @@ body {
 
 .tOutD {
     color:white;
-    text-align: left;
+    text-align: center;
     font-family: "Rubik", serif;
+}
+
+.tOutS {
+  color:white;
+  text-align: center;
+  margin-left: 100px;
+  font-family: "Rubik", serif;
 }
 
 .navFont {
   color:white;
   font-family: "Rubik", serif;
 
+}
+
+.iUpload {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
 }
 
 .tOutline {
@@ -64,6 +78,9 @@ body {
 }
 
 #descript {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   font-family: "Rubik", serif;
 }
 
@@ -151,6 +168,13 @@ body {
   #descript {
     height: 100px;
     width: 300px;
+    resize: none;
+  }
+
+  .buttonD {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .bText {
