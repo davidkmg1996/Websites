@@ -24,8 +24,16 @@
 <p class ="tOutline">
     This is just a terrible website that I am making for demonstration purposes.<br><br>
     Below you will find several images of pizza. 
+    
+            {% if current_user.profPic %}
+            <img src="{{ url_for('auth.profile_pic') }}" class="iUpload" alt="Uploaded Image" style="max-width: 50%; height: 50%;">
+        {% else %}
+            <p>No profile picture uploaded.</p>
+        {% endif %}
+
 </p>
 </div>
+
 <div>
     <!-- <img src="pics/pizza.jpeg" alt="fuck you" id="pizza" onclick="startRotation()"> -->
 </div>
@@ -39,5 +47,6 @@
   </div>
     <div id="spacer"></div>
 </div>
+
 </body>
 </html>

@@ -26,6 +26,11 @@
         <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
         <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
       </div>
+      <h1 class="tOutD">Change Profile Picture</h1>
+<form method="POST" action="{{ url_for('auth.profilePic') }}" enctype="multipart/form-data">
+    <input class="tOutS" type="file" id="file" name="profile" accept="image/*" required>
+    <button type="submit">Submit</button>
+</form>
       <h3 class="tOutD">
         Profile Description
     </h3>
@@ -47,7 +52,7 @@
     <button class="buttonD">Edit Description</button>
     <br><br>
 </form>
-<h2 class="tOutD">Uploaded Files</h2>
+<!-- <h2 class="tOutD">Uploaded Files</h2>
     </div>
       <form action="/uploads" method="POST" enctype="multipart/form-data">
         <p class="tOutD">Choose a file:</label><br><br>
@@ -57,7 +62,7 @@
     </form>
     {% if current_user.fPath %}
             <img src="{{ url_for('auth.view_image') }}" class = "iUpload" alt="Uploaded Image" style="max-width: 50%; height: 50%;">
-        {% endif %}
+        {% endif %} -->
 </header>
 </body>
 </html>

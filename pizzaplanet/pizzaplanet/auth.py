@@ -46,6 +46,7 @@ def signup_post():
     name = request.form.get('name')
     password = request.form.get('password')
     des = request.form.get('description')
+    file = request.files['profile']
 
     user = User.query.filter_by(email=email).first()
 
@@ -65,7 +66,10 @@ def signup_post():
         flash('Password is required')
         return redirect(url_for('auth.signup'))
     
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='pbkdf2:sha256'), des=des)
+    if file and file.filename.endswith(('png', 'jpg', 'jpeg', 'gif')):
+        img = file.read()
+    
+    new_user = User(email=email, name=name, password=generate_password_hash(password, method='pbkdf2:sha256'), des=des, profPic = img)
 
     db.session.add(new_user)
     db.session.commit()
@@ -89,22 +93,34 @@ def logout():
    logout_user()
    return redirect(url_for('main.index'))
 
-@auth.route('/uploads', methods=['POST'])
-def upload():
-    file = request.files['file']
-    fName = secure_filename(file.filename)
-    uploadF= current_app.config['UPLOAD']
-    
-    img = file.read()
+# @auth.route('/uploads', methods=['POST'])
+# def upload():
+#     file = request.files['file']
+#     uploadF= current_app.config['UPLOAD']
+#     img = file.read()
 
-    if not os.path.exists(uploadF):
-        os.makedirs(uploadF)
+#     if not os.path.exists(uploadF):
+#         os.makedirs(uploadF)
+
+#     user = current_user
+#     user.fPath = img
+#     db.session.commit()
+
+#     return render_template('editprofile.html', name = current_user.name, des = current_user.des, img = img)
+
+@auth.route('/uploads', methods=['POST'])
+def profilePic():
+    newPic = request.files['profile']
+    profilePic = current_app.config['UPLOAD']
+    pPic = newPic.read()
+
+    if not os.path.exists(profilePic):
+        os.makedirs(profilePic)
 
     user = current_user
-    user.fPath = img
+    user.profPic = pPic
     db.session.commit()
-
-    return render_template('editprofile.html', name = current_user.name, des = current_user.des, img = img)
+    return render_template('editprofile.html', name = current_user.name, des = current_user.des, pPic = current_user.profPic)
 
 @auth.route('/view_image')
 def view_image():
@@ -112,6 +128,15 @@ def view_image():
     if user and user.fPath:
         return send_file(BytesIO(user.fPath), mimetype='image/png') 
     return "No image found"
+
+@auth.route('/profile_pic')
+def profile_pic():
+    user = current_user
+    if user and user.profPic:
+        return send_file(BytesIO(user.profPic), mimetype='image/png') 
+    return "No image found"
+
+
 
 # @auth.route('/select', methods=['POST'])
 # def files():

@@ -16,7 +16,7 @@
       </div>
     <h2 class="tOutline">Sign Up</h2>
     <div class="box">
-        <form method="POST" action="{{ url_for('auth.signup_post') }}">
+        <form method="POST" action="{{ url_for('auth.signup_post') }}" enctype="multipart/form-data">
             <div class="field">
                 <div class="control">
                     <input class="tOutlineB2" type="email" name="email" placeholder="Email" autofocus="" onclick="closeNav()">
@@ -37,7 +37,15 @@
                     <textarea class="tOutlineB3" id ="descript" type="text" name="description" placeholder="Enter a short profile description" onclick="closeNav()"></textarea>
                 </div>
             </div>
-            <button class="tOutlineB2">Sign Up</button>
+            <div class="field">
+                <div class = control>
+                        <p class="tOutD">Choose a Profile Picture</label><br><br>
+                        <input class="tOutS" type="file" id="file" name="profile" accept="image/*" required>
+                        <br><br>
+                        <button class="buttonS" type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
         </form>
     </div>
 </div>

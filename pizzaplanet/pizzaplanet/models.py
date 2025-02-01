@@ -8,3 +8,4 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(100))
     des = db.Column(db.String(1000))
     fPath = db.Column(db.LargeBinary)
+    profPic = db.Column(db.LargeBinary)

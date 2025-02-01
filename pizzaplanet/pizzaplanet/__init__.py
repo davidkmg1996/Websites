@@ -11,6 +11,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'thisisarandomstring'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
     app.config['UPLOAD'] = 'uploads/'
+    app.config['PROFILE'] = 'profile/'
     db.init_app(app)
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
