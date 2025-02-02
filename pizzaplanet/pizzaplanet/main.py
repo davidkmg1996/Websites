@@ -19,6 +19,9 @@ def profileInfo():
     
 @main.route('/profile')
 def profile():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.userHome'))
+    
     return render_template('home.html')
 
 @main.route('/editProfile')
