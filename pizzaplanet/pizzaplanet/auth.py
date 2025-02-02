@@ -17,9 +17,9 @@ def login():
 
 @auth.route('/login', methods=['POST'])
 def login_post():
-
+    
     if current_user.is_authenticated:
-        return redirect(url_for('main.userHome'))
+        logout_user()
 
     email = request.form.get('email')
     password = request.form.get('password')
