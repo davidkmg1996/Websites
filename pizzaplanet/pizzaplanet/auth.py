@@ -18,6 +18,9 @@ def login():
 @auth.route('/login', methods=['POST'])
 def login_post():
 
+    if current_user.is_authenticated:
+        return redirect(url_for('main.userHome'))
+
     email = request.form.get('email')
     password = request.form.get('password')
     remember = True if request.form.get('remember') else False
@@ -85,7 +88,7 @@ def signup_post():
 
 def pass_validation(password):
 
-    if len(password) < 8 or len(password) > 13:
+    if len(password) < 8 or len(password) > 30:
         return False
    
     if not re.search("[a-z]", password):
