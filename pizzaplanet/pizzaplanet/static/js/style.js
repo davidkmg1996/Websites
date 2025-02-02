@@ -63,4 +63,21 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "0";
   }
 
+  function preview() {
+    const profPic = document.getElementById('file').files[0];
+    const pView = new FileReader();
+
+    pView.onloadend = function() {
+      const preview = document.getElementById('new_pic');
+      preview.src = pView.result
+      preview.style.display = "block";
+      preview.style.borderRadius = "50%";
+    }
+
+    if (file) {
+      pView.readAsDataURL(profPic)
+    }
+
+    
+  }
   //Terrible

@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
 from . import db
-import os
+import os, re
 from io import BytesIO
 from flask import Blueprint, render_template, redirect, url_for
 
@@ -66,6 +66,10 @@ def signup_post():
         flash('Password is required')
         return redirect(url_for('auth.signup'))
     
+    if not pass_validation(password):
+        flash("Password does not meet requirements.")
+        return redirect(url_for('auth.signup'))
+    
     if file and file.filename.endswith(('png', 'jpg', 'jpeg', 'gif')):
         img = file.read()
     
@@ -74,6 +78,25 @@ def signup_post():
     db.session.add(new_user)
     db.session.commit()
     return redirect(url_for('auth.login'))
+
+def pass_validation(password):
+
+    if len(password) < 8 or len(password) > 13:
+        return False
+   
+    if not re.search("[a-z]", password):
+        return False
+
+    if not re.search("[A-Z]", password):
+        return False
+
+    if not re.search("[0-9]", password):
+        return False
+       
+    if not re.search("[!@#\\$%^&*(),.?\":{}|<>]", password):
+        return False
+    
+    return True
 
 @auth.route('/editnew', methods=['POST'])
 def edit():

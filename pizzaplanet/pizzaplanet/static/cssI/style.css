@@ -82,6 +82,11 @@ body {
   font-family: "Rubik", serif;
 }
 
+#new_pic {
+
+  margin-left: -130px;
+}
+
 .tOutlineB3 {
   display: block;
   margin-left: auto;
