@@ -69,15 +69,13 @@ function openNav() {
 
     pView.onloadend = function() {
       const preview = document.getElementById('new_pic');
-      preview.src = pView.result
+      preview.src = pView.result;
       preview.style.display = "block";
-      preview.style.borderRadius = "50%";
+
     }
 
-    if (file) {
+    if (profPic) {
       pView.readAsDataURL(profPic)
     }
-
-    
   }
   //Terrible
