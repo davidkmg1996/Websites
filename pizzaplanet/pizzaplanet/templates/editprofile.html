@@ -14,10 +14,7 @@
     <div id="main">
         <button class = "openbtn" onclick="openNav()">&#9778;</button>
     </div>
-    <h2 class="tOutline">
-        Hey, {{name}}
-    </h2>
-    <p class = tOutline>Make changes to your profile</p>
+    <h2 class = tOutline>Let's Change Your Profie, {{name}}</h2>
 </header>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
@@ -32,24 +29,17 @@
         <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
         <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
       </div>
-      <h2 class="tOutD">Change Profile Picture</h2>
-<form method="POST" class="tOutS" action="{{ url_for('auth.profilePic') }}" enctype="multipart/form-data">
-    <input type="file" id="file" name="profile" accept="image/*" required>
-    <br>
-    <button type="submit">Submit</button>
-   
-</form>
-      <h3 class="tOutD">
-        Profile Description
-    </h3>
     <div>
+    <div id = "slices">
+        <div class = "slice">
+    <h3 class="tOutD">Profile Description</h3>
     <p class="tOutD">Current profile description:<br><br>{{des}}</p>
     <p class="tOutD">Edit your profile description below:<br></p>
     <form method="POST" action="{{ url_for('auth.edit') }}">
         {% with messages = get_flashed_messages() %}
     <div class="field">
         <div class="control">
-            <textarea id ="descript" type="text" name="editDesc" placeholder="Enter a short profile description"></textarea>
+            <textarea id ="descript" type="text" name="editDesc" placeholder="Enter a short profile description">{{des}}</textarea>
         </div>
         {% if messages %}
        <p id = "center">{{ messages[0] }} </p> 
@@ -60,9 +50,24 @@
     <button class="buttonD">Edit Description</button>
     <br><br>
 </form>
-<!-- <h2 class="tOutD">Uploaded Files</h2>
-    </div>
-      <form action="/uploads" method="POST" enctype="multipart/form-data">
+</div>
+
+<div class = "slice">
+<h3 class="tOutD">Change Profile Picture</h3>
+<p class="tOutD">Current profile picture: <br>
+<img src="{{ url_for('auth.profile_pic') }}" id="changePic" alt="Uploaded Image" style="height: 75px; width: 75px;">
+</p>
+<form method="POST" class="tOutS" action="{{ url_for('auth.profilePic') }}" enctype="multipart/form-data">
+    <input type="file" id="file" name="profile" accept="image/*" required>
+    <br><br>
+    <button type="submit">Submit</button>
+    <br><br>
+</form>
+</div>
+
+    <div class = "slice">
+    <h2 class="tOutD">Uploaded Files</h2>
+      <!-- <form action="/uploads" method="POST" enctype="multipart/form-data">
         <p class="tOutD">Choose a file:</label><br><br>
         <input class="tOutS" type="file" id="file" name="file" accept="image/*" required>
         <br><br>
@@ -70,7 +75,21 @@
     </form>
     {% if current_user.fPath %}
             <img src="{{ url_for('auth.view_image') }}" class = "iUpload" alt="Uploaded Image" style="max-width: 50%; height: 50%;">
-        {% endif %} -->
+        {% endif %}  -->
+</div>
+
+<a class ="back" onclick="slideshow(-1), closeNav()">&#10094;</a>
+<a class ="next" onclick="slideshow(1), closeNav()">&#10095;</a>
+
+<div class ="marker">
+    <span class ="mark" onclick="slide(0)"></span>
+    <span class ="mark" onclick="slide(1)"></span>
+    <span class ="mark" onclick="slide(2)"></span>
+</div>
+
+
+</div>
+
 </header>
 </body>
 </html>

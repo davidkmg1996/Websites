@@ -71,6 +71,14 @@ body {
 
 #profilePicture {
   border-radius: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#changePic {
+  border-radius: 40px;
+  padding-top: 20px;
 }
 
 .tOutlineB {
