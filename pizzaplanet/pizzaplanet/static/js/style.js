@@ -1,5 +1,3 @@
-const pizzaSpain = document.getElementById("pizza");
-
 /*
 
 getElementById() for DOM ids
@@ -11,16 +9,21 @@ getElementsByClassName()
 
 */
 
+const pizzaSpain = document.getElementById("pizza");
 const tScale = document.getElementById(".tOut")
-
-
 let rotation = 0;
 let scale = 1;
+let index = 0;
 let flag = 0;
 let nScale = 1;
 
+window.onload=function() {
+  slide(index + 1);
+}
+
 function  startRotation() {
 let rFlag = 0;
+
 setInterval(() => {
   rotation += 360; 
   scale = scale === 1 ? 0.5 : 0.8;
@@ -48,7 +51,7 @@ function openNav() {
   } else {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
-    flag = 0
+    flag = 0;
   }
   }
   
@@ -75,7 +78,41 @@ function openNav() {
     }
 
     if (profPic) {
-      pView.readAsDataURL(profPic)
+      pView.readAsDataURL(profPic);
     }
+  }
+
+  function slideshow(n) {
+    nextSlide(index += n);
+  }
+
+  function slide(n) {
+    nextSlide(index = n);
+  }
+
+  function nextSlide(n) {
+    let i;
+    let slices = document.querySelectorAll('.slice');
+    let marks = document.querySelectorAll('.mark');
+
+    if (n > slices.length) {
+      index = 1;
+    }
+
+    if (n < 1) {
+      index = slices.length;
+    }
+
+    for (i = 0; i < slices.length; i++) {
+      slices[i].style.display = "none";
+    }
+
+    for (i = 0; i < marks.length; i++) {
+      marks[i].className = marks[i].className.replace(" active", "");
+    }
+
+    slices[index - 1].style.display="block";
+    marks[index - 1].className += " active";
+
   }
   //Terrible

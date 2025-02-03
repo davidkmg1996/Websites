@@ -27,6 +27,26 @@
     Below you will find several images of pizza. 
 </p>
 </div>
+<div class = "slices">
+    <div class = "slice">
+        <img src="{{ url_for('static', filename='pics/pizza.jpeg') }}" style= "width: 100%;">
+    </div>
+    <div class = "slice">
+        <img src="{{ url_for('static', filename='pics/sc01.png') }}" style= "width: 100%;">
+    </div>
+    <div class = "slice">
+        <img src="{{ url_for('static', filename='pics/sc02.png') }}" style= "width: 100%;">
+    </div>
+    
+    <a class ="back" onclick="slideshow(-1)">&#10094;</a>
+    <a class ="next" onclick="slideshow(1)">&#10095;</a>
+</div>
+
+<div class ="marker">
+    <span class ="mark" onclick="slide(0)"></span>
+    <span class ="mark" onclick="slide(1)"></span>
+    <span class ="mark" onclick="slide(2)"></span>
+</div>
 
 <div>
     <!-- <img src="pics/pizza.jpeg" alt="fuck you" id="pizza" onclick="startRotation()"> -->
