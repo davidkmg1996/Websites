@@ -177,12 +177,11 @@ body {
  
 
   .square {
-    height: 180px;
-    width: 180px;
+   
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: #8400ffc0;
+    background-color: transparent;
   }
   
   .sidebar a {
