@@ -1,15 +1,14 @@
-from flask import Blueprint, render_template, request, flash, current_app, send_file
+from flask import Blueprint, render_template, request, flash, current_app, send_file, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.utils import secure_filename
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
+# import qrcode
+# import pyotp
 from . import db
 import os, re
 from io import BytesIO
-from flask import Blueprint, render_template, redirect, url_for
 
 auth = Blueprint('auth', __name__)
-
 @auth.route('/home')
 def login():
     
@@ -164,6 +163,7 @@ def profile_pic():
     if user and user.profPic:
         return send_file(BytesIO(user.profPic), mimetype='image/png') 
     return "No image found"
+
 
 
 

@@ -333,6 +333,20 @@ body {
     .sidebar a {font-size: 18px;}
   }
 
+ 
+  /*
+  Hide profile picture on smaller devices
+  /* */
+  @media screen and (max-width: 530px){ 
+    #profilePicture {
+      display: none;
+    }
+
+    .navFont {
+      font-weight: bolder;
+    }
+  } 
+
   #spacer {
     margin-top: 50px;
   }
