@@ -51,6 +51,7 @@ def signup_post():
     email = request.form.get('email')
     name = request.form.get('name')
     password = request.form.get('password')
+    confirm = request.form.get('confirm')
     des = request.form.get('description')
     file = request.files['profile']
 
@@ -70,6 +71,10 @@ def signup_post():
     
     if not password:
         flash('Password is required')
+        return redirect(url_for('auth.signup'))
+    
+    if password != confirm:
+        flash('Passwords don\'t match')
         return redirect(url_for('auth.signup'))
     
     if not pass_validation(password):
