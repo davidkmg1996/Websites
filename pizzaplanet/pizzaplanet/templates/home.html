@@ -50,6 +50,10 @@
     </label>
     <button class="tOutlineB">Login</button>
 </form>
+
+<!--ignore javascript error-->
+
+<button type="button" class="tOutlineB" onclick="window.location.href='{{ url_for('auth.signup_post') }}'">Sign Up</button>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
     <div class = "pad">
@@ -57,6 +61,9 @@
     </div>
 {% endif %}
 {% endwith %} 
+<div>
+    
+</div>
 <div id="spacer"></div>
 <span> <img src="{{ url_for('static', filename='pics/pizza.jpeg') }}" id="pizza" alt="Pizza" onclick="startRotation(), closeNav()"></span>
 </div>
