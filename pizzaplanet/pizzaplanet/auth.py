@@ -115,7 +115,7 @@ def pass_validation(password):
 
 def log_validation(name):
     
-    if len(name) > 10:
+    if len(name) > 13:
         return False
 
     return True
