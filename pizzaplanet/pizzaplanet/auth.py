@@ -58,27 +58,31 @@ def signup_post():
     user = User.query.filter_by(email=email).first()
 
     if user:
-        flash('Email address already exists')
+        flash('Email address already exists.')
         return redirect(url_for('auth.signup'))
 
     if not email:
-        flash('Email address is required')
+        flash('Email address is required.')
         return redirect(url_for('auth.signup'))
     
     if not name:
-        flash('Name is required')
+        flash('Name is required.')
         return redirect(url_for('auth.signup'))
     
     if not password:
-        flash('Password is required')
+        flash('Password is required.')
         return redirect(url_for('auth.signup'))
     
     if password != confirm:
-        flash('Passwords don\'t match')
+        flash('Passwords don\'t match.')
         return redirect(url_for('auth.signup'))
     
     if not pass_validation(password):
         flash("Password does not meet requirements.")
+        return redirect(url_for('auth.signup'))
+    
+    if not log_validation(name):
+        flash('There is a thirteen character Username limit.')
         return redirect(url_for('auth.signup'))
     
     if file and file.filename.endswith(('png', 'jpg', 'jpeg', 'gif')):
@@ -107,6 +111,13 @@ def pass_validation(password):
     if not re.search("[!@#\\$%^&*(),.?\":{}|<>]", password):
         return False
     
+    return True
+
+def log_validation(name):
+    
+    if len(name) > 13:
+        return False
+
     return True
 
 @auth.route('/editnew', methods=['POST'])
