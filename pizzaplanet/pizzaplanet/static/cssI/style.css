@@ -183,6 +183,21 @@ body {
     white-space: nowrap;
   }
 
+  .uhOh {
+    
+    width: 700px;
+    height: 300px;
+    background-color: black;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #type {
+    font-family: 'Consolas', 'serif';
+    color: white;
+    padding-left: 15px;;
+  }
  
 
   .square {

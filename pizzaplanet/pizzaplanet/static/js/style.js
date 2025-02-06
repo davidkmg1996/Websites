@@ -15,7 +15,7 @@ let rotation = 0;
 let scale = 1;
 let index = 0;
 let flag = 0;
-let nScale = 1;
+
 
 window.onload=function() {
   slide(index + 1);
@@ -115,4 +115,7 @@ function openNav() {
     marks[index - 1].className += " active";
 
   }
+
+
+
   //Terrible

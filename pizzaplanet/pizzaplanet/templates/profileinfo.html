@@ -19,11 +19,11 @@
     <h2 class="tOutline">
         {{name}}'s Profile 
     </h2>
-    <p class = tOutline>Welcome to your profile!</p>
-    <h3 class="tOutlineB4">
+    <p class = "tOutline">Welcome to your profile!</p>
+    <h3 class="tOutline">
         Profile Description
     </h3>
-    <p class = "tOutlineB4">{{des}}</p>
+    <p class = "tOutline">{{des}}</p>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
         {% if current_user.profPic %}
@@ -38,3 +38,34 @@
         <a href="{{ url_for('main.security') }}" class="navFont">Security</a>
       </div>
 </header>
+<div class="uhOh">
+    <p id="type"></p>
+</div>
+<script>
+    // The text to be typed
+    const type = `C:\\Users\\{{name}}\\pizzaplanet\\profileinfo.html>What is this?\n
+'What is this' is not recognized as an internal or external command,\n
+operable program, or batch file.\n
+You've reached a profile page for a demonstration website.\n
+Idiot.\n\n
+C:\\Users\\{{name}}\\pizzaplanet\\profileinfo.html>`;
+
+    let i = 0;          
+    const speed = 25;   
+    const element = document.getElementById("type");
+
+    function command() {
+        if (i < type.length) {
+            if (type.charAt(i) === '\n') {
+                element.innerHTML += '<br>';
+            } else {
+                element.innerHTML += type.charAt(i);
+            }
+            i++;
+            setTimeout(command, speed); 
+        }
+    }
+
+    window.onload = command;
+</script>
+</html>
