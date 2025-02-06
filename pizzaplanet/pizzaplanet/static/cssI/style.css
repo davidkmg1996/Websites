@@ -195,11 +195,10 @@ body {
 
   #type {
     font-family: 'Consolas', 'serif';
-    color: white;
+    color: #D3D3D3;
     padding-left: 15px;;
   }
  
-
   .square {
    
     display: block;
