@@ -3,10 +3,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
 # import qrcode
-# import pyotp
+import pyotp
 from . import db
 import os, re
 from io import BytesIO
+
 
 auth = Blueprint('auth', __name__)
 @auth.route('/home')
@@ -180,6 +181,13 @@ def profile_pic():
         return send_file(BytesIO(user.profPic), mimetype='image/png') 
     return "No image found"
 
+@auth.route('/security')
+def change_pass():
+    key = pyotp.random_base32()
+    totp = pyotp.TOTP(key)
+    otp = totp.now()
+
+    return render_template('security.html', name = current_user.name)
 
 
 
