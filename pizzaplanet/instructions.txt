@@ -1,17 +1,8 @@
 To access certain files in its current state,
 you must delete or comment out
 
-   key = pyotp.random_base32()
-    totp = pyotp.TOTP(key)
-    otp = totp.now()
-
-    #Will configure later
-    #or, better yet,
-    #use your own
     me = ""
-
     passw = ""
-
     dest = current_user.email
 
     msg = MIMEMultipart('alternative')
@@ -25,11 +16,10 @@ you must delete or comment out
     msg.attach(part2)
 
     s = smtplib.SMTP_SSL('smtp.gmail.com')
-
     s.login(me, passw)
-
     s.sendmail(me, dest, msg.as_string())
     s.quit()
+
 
 in the change_pass() function contained within auth.py
 

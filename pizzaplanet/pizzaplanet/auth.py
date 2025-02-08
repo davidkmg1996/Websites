@@ -187,26 +187,13 @@ def profile_pic():
 
 @auth.route('/security')
 def change_pass():
+
     key = pyotp.random_base32()
     totp = pyotp.TOTP(key)
     otp = totp.now()
 
-    #Will configure later
-    #or, better yet,
-    #use your own
     me = ""
-
-    #To test yourself in this gravity-defying
-    #Skeleshell, generate an app specific password
-    #using gMail account or configure to your
-    #liking
-
-    #To access this page without an error, comment 
-    #out or delete the "change_pass()" and do the
-    #same for the form action in security.html
-
     passw = ""
-
     dest = current_user.email
 
     msg = MIMEMultipart('alternative')
@@ -220,9 +207,7 @@ def change_pass():
     msg.attach(part2)
 
     s = smtplib.SMTP_SSL('smtp.gmail.com')
-
     s.login(me, passw)
-
     s.sendmail(me, dest, msg.as_string())
     s.quit()
 
