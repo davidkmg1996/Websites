@@ -20,7 +20,7 @@
     <h2 class="tOutline">
         Hey, {{name}}
     </h2>
-    <p class = tOutline>Manage Password, Update Email Address</p>
+    <p class = tOutline>Manage Password, Update Email Address, Change Username</p>
 
     <h3 class="tOutline">
         Security
@@ -40,16 +40,18 @@
         <a href="{{ url_for('main.editProfile') }}" class="navFont">Edit Profile</a>
         <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
       </div>
-      <div onload="{{ url_for('auth.change_pass') }}"></div>
-      <h2 class = tOutline>Change Password</h2>
+      <div></div>
+      <h2 class = tOutline>Manage Password</h2>
       <p class = tOutline>Change your password by entering your current pasword and verifying an <br>
          authorization code sent to your email.</p>
+         <form action="{{url_for('auth.change_pass')}}">
          <input id="verify" class="current" placeholder="Current Password"></button>
          <input id="verify" class="currentV" placeholder="Enter Password Again"></button>
          <br>
          <br>
          <input id="verify" class="emailV" placeholder="Enter your Email Address"></button>
          <button class="mfa" id="generate">Generate One-Time Passcode</button>
+        </form>
           <!-- <input id="verify" class="new" placeholder="New Password"></button>  -->
          <!-- <input id="verify" class="current" placeholder="Verify New Password"></button>  -->
 </header>

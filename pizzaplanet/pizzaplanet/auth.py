@@ -7,6 +7,9 @@ import pyotp
 from . import db
 import os, re
 from io import BytesIO
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 auth = Blueprint('auth', __name__)
@@ -38,6 +41,7 @@ def login_post():
         return redirect(url_for('auth.login'))
 
     login_user(user, remember=remember)
+
     return redirect(url_for('main.userHome'))
 
 @auth.route('/signup')
@@ -186,6 +190,32 @@ def change_pass():
     key = pyotp.random_base32()
     totp = pyotp.TOTP(key)
     otp = totp.now()
+
+    #Will configure later
+    #or, better yet,
+    #use your own
+    me = ""
+    passw = ""
+
+    dest = current_user.email
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "Your Authentication Code"
+    msg['From'] = me
+    msg['To'] = dest
+
+    html = f'<html><body><p>Your code is {otp}</p></body></html>'
+    part2 = MIMEText(html, 'html')
+
+    msg.attach(part2)
+
+    s = smtplib.SMTP_SSL('smtp.gmail.com')
+
+    s.login(me, passw)
+
+    s.sendmail(me, dest, msg.as_string())
+    s.quit()
+
 
     return render_template('security.html', name = current_user.name)
 
