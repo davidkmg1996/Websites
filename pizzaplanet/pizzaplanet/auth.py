@@ -195,6 +195,16 @@ def change_pass():
     #or, better yet,
     #use your own
     me = ""
+
+    #To test yourself in this gravity-defying
+    #Skeleshell, generate an app specific password
+    #using gMail account or configure to your
+    #liking
+
+    #To access this page without an error, comment 
+    #out or delete "change_pass()" and do the
+    #same for the form action in security.html
+    
     passw = ""
 
     dest = current_user.email
