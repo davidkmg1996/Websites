@@ -1,4 +1,4 @@
-To access certain files in its current state,
+To access certain files in this project's current state,
 you must delete or comment out
 
     me = ""
