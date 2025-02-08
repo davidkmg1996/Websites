@@ -1,0 +1,37 @@
+To access certain files in its current state,
+you must delete or comment out
+
+   key = pyotp.random_base32()
+    totp = pyotp.TOTP(key)
+    otp = totp.now()
+
+    #Will configure later
+    #or, better yet,
+    #use your own
+    me = ""
+
+    passw = ""
+
+    dest = current_user.email
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "Your Authentication Code"
+    msg['From'] = me
+    msg['To'] = dest
+
+    html = f'<html><body><p>Your code is {otp}</p></body></html>'
+    part2 = MIMEText(html, 'html')
+
+    msg.attach(part2)
+
+    s = smtplib.SMTP_SSL('smtp.gmail.com')
+
+    s.login(me, passw)
+
+    s.sendmail(me, dest, msg.as_string())
+    s.quit()
+
+in the auth.py file
+
+Otherwise, configure an app-specific password using your gmail account
+or configure smtp elsewhere

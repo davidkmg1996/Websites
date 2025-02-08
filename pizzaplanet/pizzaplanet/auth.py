@@ -202,9 +202,9 @@ def change_pass():
     #liking
 
     #To access this page without an error, comment 
-    #out or delete "change_pass()" and do the
+    #out or delete the "change_pass()" and do the
     #same for the form action in security.html
-    
+
     passw = ""
 
     dest = current_user.email
