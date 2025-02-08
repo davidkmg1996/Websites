@@ -31,7 +31,7 @@ you must delete or comment out
     s.sendmail(me, dest, msg.as_string())
     s.quit()
 
-in the auth.py file
+in the change_pass() function contained within auth.py
 
 Otherwise, configure an app-specific password using your gmail account
 or configure smtp elsewhere
