@@ -7,12 +7,12 @@ import pyotp
 from . import db
 import os, re
 from io import BytesIO
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 
 auth = Blueprint('auth', __name__)
+
 @auth.route('/home')
 def login():
     
@@ -185,36 +185,32 @@ def profile_pic():
         return send_file(BytesIO(user.profPic), mimetype='image/png') 
     return "No image found"
 
-@auth.route('/security')
+@auth.route('/change_pass', methods=['GET', 'POST'])
+
 def change_pass():
 
     key = pyotp.random_base32()
     totp = pyotp.TOTP(key)
-    otp = totp.now()
-
-    me = ""
-    passw = ""
-    dest = current_user.email
-
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = "Your Authentication Code"
-    msg['From'] = me
-    msg['To'] = dest
-
-    html = f'<html><body><p>Your code is {otp}</p></body></html>'
-    part2 = MIMEText(html, 'html')
-
-    msg.attach(part2)
-
-    s = smtplib.SMTP_SSL('smtp.gmail.com')
-    s.login(me, passw)
-    s.sendmail(me, dest, msg.as_string())
-    s.quit()
+    newKey = totp.now()
 
 
+    message = Mail(
+        from_email='dkmg@goldwyntech.com',
+        to_emails='dkmg@goldwyntech.com',
+        subject='Your Authentication Code',
+        html_content= f'Your authentication code is {newKey}')
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+
+    except Exception as e:
+        print('hi')
+ 
     return render_template('security.html', name = current_user.name)
-
-
+    
 
 # @auth.route('/select', methods=['POST'])
 # def files():

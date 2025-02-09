@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 from . import db
+from .auth import auth as auth_blueprint
+
 
 main = Blueprint('main', __name__)
 
@@ -41,3 +43,5 @@ def userHome():
 @login_required
 def security():
     return render_template('security.html', name = current_user.name)
+
+
