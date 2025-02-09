@@ -115,6 +115,7 @@ function openNav() {
     marks[index - 1].className += " active";
 
   }
+  
 
 //   function clicky() {
 //     let oneTime = document.getElementById("generate").getAttribute("data-url");

@@ -265,6 +265,10 @@ body {
     margin-right: auto;
   }
 
+  #ai {
+    padding-left: 75px;
+  }
+
   .back, .next {
     cursor: pointer;
   position: absolute;
