@@ -44,19 +44,25 @@
       <h2 class = tOutline>Manage Password</h2>
       <p class = tOutline>Change your password by entering your current pasword and verifying an <br>
          authorization code sent to your email.</p>
-         <form action="{{ url_for('auth.change_pass') }}">
+         
+         <!-- <form action="{{ url_for('auth.change_pass') }}">
          <input id="verify" class="current" placeholder="Current Password"></button>
          <input id="verify" class="currentV" placeholder="Enter Password Again"></button>
          <br>
          <br>
-         <input id="verify" class="emailV" placeholder="Enter your Email Address"></button>
+        </form> -->
+
+        <form action="{{ url_for('auth.change_pass') }}" method="POST">
+            <input type="email" id="emailV" name="emailV" placeholder="Email Address" required><br><br>
+            <button type="submit" class="mfa">Generate One-Time Passcode</button>
         </form>
+
         {% if success_message %}
         <div class="alert alert-success">{{ success_message }}</div>
          {% elif error_message %}
         <div class="alert alert-danger">{{ error_message }}</div>
          {% endif %}
-        <button onclick="clicky()" class="mfa" id="generate" data-url="{{ url_for('auth.change_pass') }}">Generate One-Time Passcode</button>
+       
             
           <!-- <input id="verify" class="new" placeholder="New Password"></button>  -->
          <!-- <input id="verify" class="current" placeholder="Verify New Password"></button>  -->

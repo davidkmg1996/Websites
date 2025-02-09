@@ -15,7 +15,6 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/home')
 def login():
-    
     return render_template('home.html')
 
 @auth.route('/login', methods=['POST'])
@@ -35,6 +34,7 @@ def login_post():
     
     if not password:
         flash('Password is required.')
+        return redirect(url_for('auth.login'))
 
     if not user or not check_password_hash(user.password, password):
         flash('Incorrect email or password.')
@@ -192,11 +192,11 @@ def change_pass():
     key = pyotp.random_base32()
     totp = pyotp.TOTP(key)
     newKey = totp.now()
-
-
+    authmail = request.form.get('emailV')
+    
     message = Mail(
         from_email='dkmg@goldwyntech.com',
-        to_emails='dkmg@goldwyntech.com',
+        to_emails=f'{authmail}',
         subject='Your Authentication Code',
         html_content= f'Your authentication code is {newKey}')
     try:

@@ -116,11 +116,11 @@ function openNav() {
 
   }
 
-  function clicky() {
-    let oneTime = document.getElementById("generate").getAttribute("data-url");
-    console.log("Redirecting to:", oneTime);  
-    window.location.href = oneTime; 
-};
+//   function clicky() {
+//     let oneTime = document.getElementById("generate").getAttribute("data-url");
+//     console.log("Redirecting to:", oneTime);  
+//     window.location.href = oneTime; 
+// };
    
 
 
