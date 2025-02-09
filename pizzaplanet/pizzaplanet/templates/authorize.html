@@ -20,10 +20,8 @@
     <h2 class="tOutline">
         Hey, {{name}}
     </h2>
-    <p class = tOutline>Manage Password, Update Email Address, Change Username</p>
-
     <h3 class="tOutline">
-        Security
+        Enter Authorization Code
     </h3>
 </form>
     </div>
@@ -35,15 +33,13 @@
             <p></p>
             {% endif %}
         </a>
-        <a href="{{ url_for('main.userHome') }}" class="navFont" id="tOut">Home</a>
-        <a href="{{ url_for('main.profileInfo') }}" class="navFont">Profile</a>
-        <a href="{{ url_for('main.editProfile') }}" class="navFont">Edit Profile</a>
-        <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
+        <a href="{{ url_for('main.security') }}" class="navFont" id="tOut">Back</a>
       </div>
       <div></div>
-      <h2 class = tOutline>Manage Password</h2>
-      <p class = tOutline>Change your password by entering your current pasword and verifying an <br>
-         authorization code sent to your email.</p>
+      <h2 class = tOutline>Enter Authorization Code</h2>
+      <p class = tOutline>In order to change your password, you must enter the authorization code sent
+        to {{email}}.
+      </p>
 
          <!-- <form action="{{ url_for('auth.change_pass') }}">
          <input id="verify" class="current" placeholder="Current Password"></button>
@@ -51,16 +47,16 @@
          <br>
          <br>
         </form> -->
-
-        <form action="{{ url_for('auth.change_pass') }}">
-            <button type="submit" class="mfa">Generate One-Time Passcode</button>
+        <!-- {% with messages = get_flashed_messages() %} -->
+        <form method="POST">
+            <input class="tOutlineB2" name="auth" placeholder="Enter Code" autofocus="">
+            <button type="submit">Verify Passcode</button>
         </form>
-
-        {% if success_message %}
-        <div class="alert alert-success">{{ success_message }}</div>
-         {% elif error_message %}
-        <div class="alert alert-danger">{{ error_message }}</div>
-         {% endif %}
+        <!-- {% if messages %}
+        {{ messages[0] }}
+        {% endif %}
+        {% endwith %} -->
+       
        
             
           <!-- <input id="verify" class="new" placeholder="New Password"></button>  -->

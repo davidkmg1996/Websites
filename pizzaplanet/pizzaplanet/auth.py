@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, current_app, send_file, redirect, url_for
+from flask import Blueprint, render_template, request, flash, current_app, send_file, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 from .models import User
@@ -186,12 +186,11 @@ def profile_pic():
     return "No image found"
 
 @auth.route('/change_pass', methods=['GET', 'POST'])
-
 def change_pass():
-
     key = pyotp.random_base32()
     totp = pyotp.TOTP(key)
     newKey = totp.now()
+    session['newKey'] = newKey
     userMail = current_user.email
 
     message = Mail(
@@ -205,12 +204,37 @@ def change_pass():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-
+        return redirect(url_for(f'auth.authenticateNewKey'))
+    
     except Exception as e:
         print('hi')
- 
-    return render_template('security.html', name = current_user.name)
+
+    return render_template('authorize.html', name = current_user.name, email = current_user.email)
+
+@auth.route('/authorize', methods =['GET', 'POST'])
+def authenticateNewKey():
+    newKey = session.get('newKey')
+    print(newKey)
     
+    if request.method == 'POST':
+        userKey = request.form.get('auth')
+        newKey = session.get('newKey')
+        print(userKey)
+        print(newKey)
+        if (newKey == userKey):
+            flash('Successfully authorized')
+            print('Key Matches')
+        elif(newKey != userKey):
+            flash('Unsuccessful authorization.')
+    
+   
+    return render_template('authorize.html', name = current_user.name, email = current_user.email)
+    
+
+
+    
+
+
 
 # @auth.route('/select', methods=['POST'])
 # def files():
