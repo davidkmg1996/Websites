@@ -44,7 +44,7 @@
       <h2 class = tOutline>Manage Password</h2>
       <p class = tOutline>Change your password by entering your current pasword and verifying an <br>
          authorization code sent to your email.</p>
-         
+
          <!-- <form action="{{ url_for('auth.change_pass') }}">
          <input id="verify" class="current" placeholder="Current Password"></button>
          <input id="verify" class="currentV" placeholder="Enter Password Again"></button>
@@ -53,7 +53,6 @@
         </form> -->
 
         <form action="{{ url_for('auth.change_pass') }}" method="POST">
-            <input type="email" id="emailV" name="emailV" placeholder="Email Address" required><br><br>
             <button type="submit" class="mfa">Generate One-Time Passcode</button>
         </form>
 

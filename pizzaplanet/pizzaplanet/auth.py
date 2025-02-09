@@ -192,11 +192,11 @@ def change_pass():
     key = pyotp.random_base32()
     totp = pyotp.TOTP(key)
     newKey = totp.now()
-    authmail = request.form.get('emailV')
-    
+    userMail = current_user.email
+
     message = Mail(
         from_email='dkmg@goldwyntech.com',
-        to_emails=f'{authmail}',
+        to_emails=f'{userMail}',
         subject='Your Authentication Code',
         html_content= f'Your authentication code is {newKey}')
     try:
