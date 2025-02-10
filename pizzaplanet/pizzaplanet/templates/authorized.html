@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html id="bleh">
+<body>
+<head>
+    <title>Security</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href = "{{ url_for('static', filename='cssI/style.css') }}">
+    <script src="{{ url_for('static', filename='js/style.js') }}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<header>
+   <h1 class = "tOutline">
+    Successfully Authorized
+   </h1>
+   <h2 class = "tOutline">Enter Your New Password Below</h2>
+   <form method="POST">
+    <input name="currentP" class = "tOutlineB2" type="password" placeholder="Current Password">
+    <input name="cPass" class="tOutlineB2" type="password"  placeholder="New Password">
+    <input name ="cPassV" class = "tOutlineB2" type = "password" placeholder="Verify New Password">
+    <button class="tOutlineB2" type="submit">Change Password</button>
+   </form>
+</header>
+</body>
+</html>
+

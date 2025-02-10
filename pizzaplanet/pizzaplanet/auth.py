@@ -204,14 +204,14 @@ def change_pass():
         print(response.status_code)
         print(response.body)
         print(response.headers)
-        return redirect(url_for(f'auth.authenticateNewKey'))
+        return redirect(url_for('auth.authenticateNewKey'))
     
     except Exception as e:
         print('hi')
 
     return render_template('authorize.html', name = current_user.name, email = current_user.email)
 
-@auth.route('/authorize', methods =['GET', 'POST'])
+@auth.route('/authorize', methods=['GET', 'POST'])
 def authenticateNewKey():
     newKey = session.get('newKey')
     print(newKey)
@@ -223,15 +223,46 @@ def authenticateNewKey():
         print(newKey)
         if (newKey == userKey):
             flash('Successfully authorized')
-            print('Key Matches')
+            return redirect(url_for(f'auth.finalAuth'))
+
         elif(newKey != userKey):
             flash('Unsuccessful authorization.')
-    
-   
+
     return render_template('authorize.html', name = current_user.name, email = current_user.email)
     
 
+@auth.route("/passAuth", methods=['GET', 'POST'])
+def finalAuth():
+   currentPass = request.form.get('currentP')
+   newPass = request.form.get('cPass')
+   newPassV = request.form.get('cPassV')
 
+   if current_user.password != currentPass:
+       flash('Please Re-Enter Your Current password')
+
+   if newPass != newPassV:
+       flash('Passwords do not match')
+
+   if len(newPass) < 8 or len(newPassV) > 30:
+        return render_template('authorized.html')
+   
+   if not re.search("[a-z]", newPass):
+        return render_template('authorized.html')
+
+   if not re.search("[A-Z]", newPass):
+        return render_template('authorized.html')
+
+   if not re.search("[0-9]", newPassV):
+        return render_template('authorized.html')
+       
+   if not re.search("[!@#\\$%^&*(),.?\":{}|<>]", newPass):
+        return render_template('authorized.html')
+
+   current_user.password = newPass
+   db.sesssion.commit()
+
+   return redirect(url_for('main.security'))
+    
     
 
 

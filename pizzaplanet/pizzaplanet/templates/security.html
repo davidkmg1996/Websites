@@ -52,7 +52,7 @@
          <br>
         </form> -->
 
-        <form action="{{ url_for('auth.change_pass') }}">
+        <form action="{{ url_for('auth.change_pass') }}" method="POST">
             <button type="submit" class="mfa">Generate One-Time Passcode</button>
         </form>
 
