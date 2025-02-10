@@ -52,6 +52,9 @@
             <input class="tOutlineB2" name="auth" placeholder="Enter Code" autofocus="">
             <button class="tOutlineB2" type="submit">Verify Passcode</button>
         </form>
+        <form action="{{ url_for('main.security') }}">
+            <button type="submit" class="tOutlineB2">Cancel</button>
+           </form>
         <!-- {% if messages %}
         {{ messages[0] }}
         {% endif %}
