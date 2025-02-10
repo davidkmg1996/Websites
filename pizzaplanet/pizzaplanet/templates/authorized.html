@@ -21,6 +21,9 @@
     <input name ="cPassV" class = "tOutlineB2" type = "password" placeholder="Verify New Password">
     <button class="tOutlineB2" type="submit">Change Password</button>
    </form>
+   <form action="{{ url_for('main.security') }}">
+    <button type="submit" class="tOutlineB2">Back</button>
+   </form>
 </header>
 </body>
 </html>
