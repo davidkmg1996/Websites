@@ -208,6 +208,7 @@ def change_pass():
     
     except Exception as e:
         print('hi')
+        return redirect(url_for('auth.authenticateNewKey'))
 
     return render_template('authorize.html', name = current_user.name, email = current_user.email)
 
@@ -227,41 +228,45 @@ def authenticateNewKey():
 
         elif(newKey != userKey):
             flash('Unsuccessful authorization.')
+            
 
     return render_template('authorize.html', name = current_user.name, email = current_user.email)
     
 
 @auth.route("/passAuth", methods=['GET', 'POST'])
 def finalAuth():
-   currentPass = request.form.get('currentP')
-   newPass = request.form.get('cPass')
-   newPassV = request.form.get('cPassV')
-
-   if current_user.password != currentPass:
-       flash('Please Re-Enter Your Current password')
-
-   if newPass != newPassV:
-       flash('Passwords do not match')
-
-   if len(newPass) < 8 or len(newPassV) > 30:
-        return render_template('authorized.html')
    
-   if not re.search("[a-z]", newPass):
-        return render_template('authorized.html')
+   if request.method == 'POST':    
+       currentPass = request.form.get('currentP')
+       newPass = request.form.get('cPass')
+       newPassV = request.form.get('cPassV')
 
-   if not re.search("[A-Z]", newPass):
-        return render_template('authorized.html')
+       if current_user.password != currentPass:
+            flash('Please Re-Enter Your Current password')
 
-   if not re.search("[0-9]", newPassV):
-        return render_template('authorized.html')
+       if newPass != newPassV:
+            flash('Passwords do not match')
+
+       if len(newPass) < 8 or len(newPassV) > 30:
+            return render_template('authorized.html')
+   
+       if not re.search("[a-z]", newPass):
+            return render_template('authorized.html')
+
+       if not re.search("[A-Z]", newPass):
+            return render_template('authorized.html')
+
+       if not re.search("[0-9]", newPassV):
+            return render_template('authorized.html')
        
-   if not re.search("[!@#\\$%^&*(),.?\":{}|<>]", newPass):
-        return render_template('authorized.html')
+       if not re.search("[!@#\\$%^&*(),.?\":{}|<>]", newPass):
+            return render_template('authorized.html')
 
-   current_user.password = newPass
-   db.sesssion.commit()
+       current_user.password = generate_password_hash(newPass, method='pbkdf2:sha256')
+       db.session.commit()
+       return redirect(url_for('main.security'))
 
-   return redirect(url_for('main.security'))
+   return render_template('authorized.html', name = current_user.name, email = current_user.email)
     
     
 
