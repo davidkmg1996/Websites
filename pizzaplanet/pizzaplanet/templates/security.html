@@ -41,6 +41,9 @@
         <a href="{{ url_for('auth.logout') }}" class="navFont">Sign Out</a>
       </div>
       <div></div>
+      <div id="slices">
+      <div class="slice">
+      
       <h2 class = tOutline>Manage Password</h2>
       <p class = tOutline>Change your password by entering your current pasword and verifying an <br>
          authorization code sent to your email.</p>
@@ -62,7 +65,28 @@
         <div class="alert alert-danger">{{ error_message }}</div>
          {% endif %}
        
+        </div>
+
+        <div class = "slice">
+            <h2 class = tOutline>Update Email Address</h2>
+
+        </div>
+
+        <div class= "slice">
+            <h2 class = tOutline>Change Location</h2>
+
+        </div>
+        </div>
             
+        <a class ="back" onclick="slideshow(-1), closeNav()">&#10094;</a>
+        <a class ="next" onclick="slideshow(1), closeNav()">&#10095;</a>
+        
+        <div class ="marker">
+            <span class ="mark" onclick="slide(1)"></span>
+            <span class ="mark" onclick="slide(2)"></span>
+            <span class ="mark" onclick="slide(3)"></span>
+        </div>
+        
           <!-- <input id="verify" class="new" placeholder="New Password"></button>  -->
          <!-- <input id="verify" class="current" placeholder="Verify New Password"></button>  -->
 </header>
